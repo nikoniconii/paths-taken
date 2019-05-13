@@ -8,15 +8,30 @@ define en = Character(' ', color="#E8C8C8", show_two_window= True, image="emory"
 define l = Character('Lisia', color="#D9799B", show_two_window= True, image="lisia")
 define m = Character('Marco', color="#8489DB", show_two_window= True, image="marco")
 define k = Character('Katherine', color="#E8665F", show_two_window= True, image="katherine")
+define mother = Character('Mother', color="#FFF", show_two_window= True, image="mother")
+
+
+define queen = Character('Queen', color="#fff", show_two_window= True)
+define king = Character('King', color="#fff", show_two_window= True)
 define aunt = Character('Auntie', color="#fff", show_two_window= True)
 define uncle = Character('Uncle', color="#fff", show_two_window= True)
 define vendor = Character('Vendor', color="#fff", show_two_window= True)
 define c1 = Character('Cousin', color="#fff", show_two_window= True)
 define tv = Character('TV', color="#9CBAF7", show_two_window= True)
 define g = Character('Guest', color="#FFF", show_two_window= True)
+define minister = Character('Minister', color="#FFF", show_two_window= True)
+define stablehand = Character('Stable hand', color="#FFF", show_two_window= True)
+define el = Character('[pname] & Lisia', color="#FFF", show_two_window= True)
+define gm = Character('[gmname]', color="#FFF", show_two_window= True)
+define gmm = Character('Guild Member 2', color="#FFF", show_two_window= True)
+define na = Character('???', color="#FFF", show_two_window= True)
+
 define fade = Fade(1.0, 0.0, 1.0, color="#000")
 define fadee = Fade(1.0, 1.0, 1.0, color="#000")
 define flash = Fade(1.0, .0, 1.0, color="#fff")
+
+
+define gmname = "Guild Member 1"
 
 
 transform rightt:
@@ -36,6 +51,17 @@ transform closeleft:
     yalign 1.0
 
 
+transform closerright:
+    xalign 0.90
+    yalign 0.30
+    zoom 1.3
+    
+transform closerleft:
+    xalign 0.15
+    yalign 0.30
+    zoom 1.3
+
+
 
 ##############################################################################
 # Splashscreen
@@ -46,7 +72,9 @@ label splashscreen:
 
     scene black
 
-    show companylogo
+    show companylogo:
+        yalign 0.4
+        xalign 0.5
     with fade
 
     $ renpy.pause(2.5)
@@ -64,12 +92,10 @@ label start:
     
 label startgame:
 
-    $ cordelian = 5
-    $ lisia = 5
-    $ marco = 5
-    $ katherine = 5
-    $ gossip = 10
-    $ knowledge = 10
+    $ cordelian = 1
+    $ lisia = 1
+    $ marco = 1
+    $ katherine = 1
 
     default overworld_choice1 = ""
     default overworld_choice2 = ""
@@ -86,8 +112,8 @@ label startgame:
     show emory down frown
     with dissolve
 
-    play music "Dash (Loop).wav" fadeout 1 
-    queue music "Dash (Loop).wav"    
+    play music "Dash.wav" fadeout 1 
+    queue music "Dash.wav"    
 
     "{i}Miss Renne will be upset if I don't finish my homework before tonight. But, she'll be even angrier if I show up without my textbook.{/i}"
     "{i}...{/i}"
@@ -550,7 +576,7 @@ menu:
         
 if sit == 'sat':
     
-    $ cordelian += 5
+    $ cordelian += 1
     
     show emory up talk
     
@@ -1187,7 +1213,7 @@ if hide == "cathedral":
 
     "{i}I put my hand on his shoulder.{/i}"
 
-    if cordelian >= 10:
+    if cordelian >= 6:
         show cordelian blush 
 
         "{i}He puts his hand on mine.{/i}"
@@ -1457,7 +1483,7 @@ menu:
         
 if talktoyouu == 'nottalktoyou':
     
-    $ lisia -= 5
+    $ lisia -= 1
     
     show emory talk
     show lisia down frown
@@ -1520,7 +1546,7 @@ if talktoyouu == 'notworkforme':
     
 if talktoyouu == 'trythat':
     
-    $ lisia += 5
+    $ lisia += 1
     
     show emory up talk
     
@@ -1731,7 +1757,7 @@ label cousinhouse:
         l talk "Thank you..."
 
     if ldoubt == "forget":
-        $ lisia += 5
+        $ lisia += 1
 
         e talk "I'll never forget you, Lisia."
         e "Yes, we won't be able to stay together forever... Eventually, we'll have to go our separate ways."
@@ -2015,7 +2041,7 @@ label castle1:
     
     $ overworld1_choice = 'cordelian'
     
-    $ cordelian += 5
+    $ cordelian += 1
     
     scene bg castleinside1
     with fade
@@ -2024,6 +2050,9 @@ label castle1:
     show cordelian smile at rightt
     with Dissolve(0.5)
     
+    play music "Tabi.mp3" fadeout 1 
+    queue music "Tabi.mp3"
+
     show cordelian up talk
     
     c "Good morning, [pname]!"
@@ -2097,7 +2126,7 @@ label forest1:
     
     $ overworld1_choice = 'marco'
     
-    $ marco += 5
+    $ marco += 1
     
     scene bg forest
     with fade
@@ -2196,7 +2225,7 @@ label forest1:
 label home1:
     
     $ overworld1_choice = 'lisia'
-    $ lisia += 5
+    $ lisia += 1
     
     scene bg castionmanorinside
     with fade
@@ -2204,6 +2233,9 @@ label home1:
     show lisia up smile at rightt
     show emory up smile at leftt
     with Dissolve(0.5)
+
+    play music "Encounter.mp3" fadeout 1 
+    queue music "Encounter.mp3"
     
     show lisia up talk
     
@@ -2348,6 +2380,9 @@ label overworld_choice1_end:
 
     scene bg bedroomday
     with fade
+
+    play music "Irreplacable Warmth.mp3" fadeout 1 
+    queue music "Irreplacable Warmth.mp3"
     
     "{i}Lisia must have opened the curtains earlier. It's so bright in here...{/i}"
     "{i}Hmm... I believe I have Math in an hour.{/i}"
@@ -2366,18 +2401,18 @@ label overworld_choice1_end:
     
 label overworld_choice2:
 
-scene overworld
-with fade
+    scene overworld
+    with fade
 
-####################################### Monday- tsm
+    ####################################### Monday- tsm
 
-call screen overworld2
+    call screen overworld2
 
 label castle2:
     
     $ overworld2_choice = 'cordelian'
     
-    $ cordelian += 5
+    $ cordelian += 1
     
     scene bg castleinside1
     with fade
@@ -2385,6 +2420,9 @@ label castle2:
     show cordelian smile at rightt
     show emory up smile at leftt
     with Dissolve(0.5)
+
+    play music "Tabi.mp3" fadeout 1 
+    queue music "Tabi.mp3"
     
     show cordelian up talk
     
@@ -2460,7 +2498,7 @@ if clothing_choice == 'purple':
     
 if clothing_choice == 'lightblue':
     
-    $ cordelian += 5
+    $ cordelian += 1
     
     show emory up talk
     
@@ -2554,7 +2592,7 @@ label forest2:
     
     $ overworld2_choice = 'marco'
     
-    $ marco += 5
+    $ marco += 1
     
     scene bg forest
     with fade
@@ -2710,7 +2748,7 @@ label home2:
     
     $ overworld2_choice = 'lisia'
     
-    $ lisia += 5
+    $ lisia += 1
     
     scene bg castionmanorinside
     with fade
@@ -2718,6 +2756,9 @@ label home2:
     show lisia up smile at rightt
     show emory up smile at leftt
     with Dissolve(0.5)
+
+    play music "Encounter.mp3" fadeout 1 
+    queue music "Encounter.mp3"
     
     show lisia up talk
     
@@ -2828,7 +2869,7 @@ label castle3:
     
     $ overworld3_choice = 'cordelian'
     
-    $ cordelian += 5
+    $ cordelian += 1
     
     scene bg castle
     with fade
@@ -2836,6 +2877,9 @@ label castle3:
     show cordelian smile at rightt
     show emory up smile at leftt
     with Dissolve(0.5)
+
+    play music "Tabi.mp3" fadeout 1 
+    queue music "Tabi.mp3"
     
     show emory unsure frowntalk
     
@@ -2871,8 +2915,8 @@ label castle3:
                 "{i}It's perfect for studying, or just getting away from it all.{/i}"
                 "{i}We pick a bench to sit on and Cordelian pulls out his notes.{/i}"
                 
-                show cordelian smile at rightt
-                show emory up smile at leftt
+                show cordelian smile at closerright
+                show emory up smile at closerleft
                 with Dissolve(0.5)
                 
                 show cordelian up talk
@@ -2985,7 +3029,7 @@ label forest3:
     
     $ overworld3_choice = 'marco'
     
-    $ marco += 5
+    $ marco += 1
     
     scene bg castleinside2
     with fade
@@ -3125,7 +3169,7 @@ label home3:
     
     $ overworld3_choice = 'lisia'
     
-    $ lisia += 5
+    $ lisia += 1
     
     scene bg bedroomday
     with fade
@@ -3135,6 +3179,9 @@ label home3:
     show emory up smile at leftt
     show lisia up smile at rightt
     with Dissolve(0.5)
+
+    play music "Encounter.mp3" fadeout 1 
+    queue music "Encounter.mp3"
     
     show emory unsure talk
     
@@ -3260,6 +3307,9 @@ label nerd:
     
     scene bg bedroomnight
     with fade
+
+    play music "Irreplacable Warmth.mp3" fadeout 1 
+    queue music "Irreplacable Warmth.mp3"
     
     "{i}Just a few more hours till the party...{/i}"
     
@@ -3281,6 +3331,9 @@ label nerd:
     show lisia up smile at rightt
     show emory up smile at leftt
     with Dissolve(0.5)
+
+    play music "Encounter.mp3" fadeout 1 
+    queue music "Encounter.mp3"
     
     show lisia up talk
     
@@ -3342,6 +3395,9 @@ label nerd:
     show cordelian frown at rightt
     show emory unsure frown at leftt
     with Dissolve(0.5)
+
+    play music "Tabi.mp3" fadeout 1 
+    queue music "Tabi.mp3"
     
     show emory unsure frowntalk
     
@@ -3844,11 +3900,12 @@ label quickk:
     scene black 
     with fade 
 
-    ## call imagemap
+    jump postdemo
 
-    # "Thank you for playing the beta demo for Paths Taken!"
-    # "We hoped you've enjoyed what you've seen so far, and give our team any feedback you have!"
-    # "The full game will be on Itch.io and Steam for free and will include routes for all 4 main characters (i.e. Cordelian, Katherine, Lisia, and Marco)."
-    # "Thank you again for checking this out!"
+    "Thank you for playing the beta demo for Paths Taken!"
+    "We hoped you've enjoyed what you've seen so far, and give our team any feedback you have!"
+    "The full game will be on Itch.io and Steam for free and will include routes for all 4 main characters (i.e. Cordelian, Katherine, Lisia, and Marco)."
+    "You can follow development on {a=https://twitter.com/CrystalGameWork/}Twitter{/a} and {a=https://crystalgameworks.itch.io/}Itch.io{/a}."
+    "Thank you again for checking Paths Taken out!"
 
     return
