@@ -2764,6 +2764,30 @@ label cordelianroute:
     c "Said a few other pleasantries while he was at it..."
     c "Katherine ran off to her room..."
     c "I..."
+
+    if katherine <= 2:
+        c "I'm going to go through with this."
+        e frowntalk "W-What?!"
+        show emory frown
+        c "This is what I was supposed to do all along. I'll see it through."
+        e frowntalk "You told me yourself you don't want to!"
+        show emory frown
+        c "There's no other choice. I'm going to see this through."
+        e frowntalk "Cordelian..."
+        show emory frown
+        c "Please... let me have some time alone now."
+        e "..."
+        hide emory
+        hide emorytint
+        with Dissolve(0.8)
+        scene black with fadee
+        show text "BAD END" at center:
+            yalign 0.5
+        with dissolve
+        $ renpy.pause(2.0)
+        ## TODO bad end achievement
+        hide text with dissolve
+        return
     c "I don't know what to do."
     c "I just want out of this."
     c "[pname]. Please."
@@ -2881,7 +2905,7 @@ label cordelianroute:
     scene bg castleinside1
     with fadee
 
-    king "You're falling for these dillusions too, Morgan?"
+    king "You're falling for these delusions too, Morgan?"
     queen "Henry, if he was simply trying to get out of commitment he would have voiced his concerns long ago. Look at him."
     queen "Is this forced marriage really worth the happiness of our son? Will this really aid us that much in the long run?"
     king "Listen to yourself! You agreed to this not long ago!"
@@ -2892,17 +2916,141 @@ label cordelianroute:
     queen "Why must you insist we barter with {i}lives{/i}?"
     king "You were fine with that just last week!"
     queen "And now I've come to my senses!"
-    
+    queen "When will you come to yours?"
 
+    scene bg castleinside1
+    with fadee
 
+    show cordelian up frown at center
+    with dissolve
 
+    king "...Cordelian."
+    king "Is this really what you want?"
 
+    c frowntalk "Yes, Father."
 
+    show cordelian frown
 
+    king "Why hadn't you expressed this before? Before all this preparation? Before all this was set in stone?"
 
+    c sad frowntalk "I..."
+    c "I thought..."
+    extend " *cough* "
+    extend " I thought it would be best if I went along with it, that it wouldn't be too bad."
+    c up "But now- now I see I was wrong."
 
+    show cordelian frown
 
+    king "{i}You{/i} were wrong?"
 
+    c frowntalk "...Yes, Father."
+    c "I {i}thought{/i} it would be for the best. I don't believe that anymore."
+    c "I want what's best for Sharan, and with that in mind, I don't believe an arranged marriage would fit that."
+    c "When we were there last, you two were talking about tariffs and fishing rights on the coast- we can use these as leverage rather than the rest of my- the rest of Katherine and my- lives."
+
+    show cordelian frown
+
+    king "..."
+    king "......"
+    king "...Alright then."
+    king "I believe His Highness will be most amicable to increased tariffs- though, he might be upset not to see his daughter wed in a few days."
+
+    c talk "I don't think it all has to go to waste. We do need to have a final send off for our troops, no?"
+
+    show cordelian smile
+
+    king "Yes, I'm sure they'd be honored by a royal wedding-sized party."
+
+    c talk "Thank you, Father."
+
+    show cordelian smile
+
+    $ renpy.pause(0.1)
+
+    scene bg ballroom
+    with fade
+
+    en "Just like he promised, it's a party fit for royalty- but all for the soldiers."
+    en "I never thought someone could go through all the stages of grief so quickly as when Cordelian told Marco about the change of plans."
+    en "Now, he's just relieved."
+    en "I suppose this is the last I'll see of Katherine for a long time... she doesn't have much of a reason to visit anymore."
+    en "But... that does mean more time to spend with Cordelian."
+
+    show emory up smile at leftt
+    show cordelian up smile crown at rightt
+    with dissolve
+
+    c talk "Good evening, [pname]."
+    c "Having fun so far?"
+
+    show cordelian smile
+
+    e talk "It's wonderful, really."
+    e "I didn't know the grand ballroom could fit so many people."
+
+    show emory smile
+
+    c talk "Well, it's definitely a fair bit more than would have attended the wedding- due to limited invitations, of course- but we have enough catering for even more."
+    c "But! I didn't come over here for that."
+
+    show cordelian smile
+
+    e talk "Did you come here for Katherine's last night in Sharan?"
+
+    show emory smile
+
+    c talk "Ye- no! You're getting me off subject now!"
+
+    show cordelian frown
+
+    e talk "I can't help that you're that easily sidetracked."
+
+    show emory smile
+
+    c frowntalk "I- ah, you see, I came over here- just as a side thought- to see..."
+    c blush "To see... "
+    extend "if you'd care for a dance."
+
+    show cordelian smile
+
+    e frowntalk "A dance?"
+    e "No, not really."
+
+    show emory frown
+
+    c frowntalk "Wh-{w=0.5}{nw}"
+
+    e talk "I'm kidding, I'm kidding."
+    e "Take my hand, won't you?"
+
+    show emory smile
+
+    c talk "I will if you're sure."
+
+    show cordelian smile
+
+    hide cordelian
+    hide emory
+    with dissolve
+
+    en "The bleak feeling that clung in the air is gone now."
+    en "Just laughs, festivities, and eyes towards the future."
+    en "Even the looming war can't hamper the bright atmosphere- no, if anything, it only magnifies it."
+    en "Cordelian holds me close, with everyone around us oblivious."
+
+    c "[pname]... there's still a lot left to do."
+    c "I know I can count on you... but I want to hear it from you."
+
+    e "I'll help you with whatever you need."
+    e "As long as you want me by your side, I'll be there."
+    e "Does that put you at ease?"
+
+    c "Yes, it does."
+
+    en "He closes his eyes and smile."
+    en "A perfect smile for a perfect night."
+
+    jump credits
 
 
 label katherineroute:
@@ -3056,6 +3204,406 @@ label katherineroute:
 
     en "That's true..."
 
+    e frowntalk "Even with a marriage, problems could arise."
+
+    show emory frown
+
+    k frowntalk "Please don't say more."
+
+    show katherine frown
+
+    e frowntalk "I-I'm just saying that even binding contracts can be broken... so if a marriage might not ensure safety, then what about something less... life changing?"
+    e "I'm sure Cordelian has a few ideas."
+
+    show emory frown
+
+    k down frowntalk "No!"
+    k sad "I... I just mean..."
+    k "I don't want him to know... that I've had second thoughts..."
+
+    if cordelian >= 4:
+        show katherine frown
+
+        e frowntalk "Who's to say he hasn't had second thoughts?"
+
+        show emory frown
+
+        k frowntalk "I... I can't risk that..."
+
+    else:
+        k "I... I can't risk him knowing..."
+
+    show katherine frown
+
+    e frowntalk "What's there to risk? The rest of your life?"
+
+    show emory frown
+
+    k up frowntalk "Yes."
+
+    show katherine frown
+
+    e frowntalk "Katherine... there has to be something else. Something."
+
+    show emory frown
+
+    k down frowntalk "Don't you believe I've thought about that? That I've sat here trying to figure something else out?"
+
+    show katherine frown
+
+    e frowntalk "Katherine, please. Just talk to them."
+    e "For me."
+    e "You don't know how it'll go until you try."
+
+    show emory frown
+
+    k "..."
+    k up "....."
+    k frowntalk "...I'll consider it."
+
+    show katherine frown
+
+    e talk "Thank you."
+
+    show emory smile
+
+    scene bg darkroom
+    with fadee
+
+    e "Katherine...?"
+    e "..."
+    en "Is she even in here anymore or did the maids not see her leave?"
+    e "Kathy?"
+    e "..."
+
+    k "..O..."
+    k "Over... here..."
+
+    show emory sad frown at closerleft
+    show emorytint at closerleft:
+        yalign 0.39
+        xalign -0.28
+        alpha 0.3
+    with dissolve
+
+    e frowntalk "Katherine...?"
+    en frown "I can barely make out her outline in the shadows, leaning against a wall."
+
+    menu:
+        "Sit down with her":
+            e frowntalk "Katherine... I'm here."
+
+            show emory frown
+
+    k "..."
+    k "I... I should have kept my mouth shut... "
+    extend "not let you talk me into it..."
+
+    if cordelian <= 3:
+        k "Cordelian told me off... he wouldn't even let me speak to the king."
+        k "I tried to reason with him but the moment he realized what I was insinuating he became furious."
+        k "I couldn't even talk to the king."
+        k "I couldn't do anything."
+        k "I can't do anything."
+        e frowntalk "Katherine, I'm sure-{w=0.5}{nw}"
+        show emory frown
+        k "Sure of what? I'm sure of one thing. That in a few days I'll be wed to Cordelian."
+        k "That's what I'm sure of."
+        k "[pname], just... just let me be alone for a while, alright?"
+        e "..."
+        hide emory
+        hide emorytint
+        with Dissolve(0.8)
+        scene black with fadee
+        show text "BAD END" at center:
+            yalign 0.5
+        with dissolve
+        $ renpy.pause(2.0)
+        ## TODO bad end achievement
+        hide text with dissolve
+        return
+
+    k "Cordelian was more amicable to the idea than I thought... said if I wasn't happy, then I shouldn't be forced into it..."
+    k "But..."
+    k "The king..."
+    k "..."
+    k "He... He wouldn't hear it..."
+    k "Threw us out..."
+    e "..."
+    k "[pname]..."
+    en "What... what can we do...?"
+    en "Is there really nothing we can try now?"
+    en "I don't want her to live with this regret."
+    en "But... I can't think of anything."
+
+    menu:
+        "Hold her hand":
+            en "I hold her hand while we sit there in silence."
+        "Do nothing":
+            en "I sit beside her in the silence."
+
+    $ renpy.pause(2.0)
+
+    e "...?"
+    e unsure frowntalk "Katherine, what's that noise outside?"
+    e "Was the king expecting a guest today?"
+
+    show emory frown
+
+    k "A guest?"
+    k "Hmm..."
+    k "Oh, it must be the queen. Cordelian told me she was off visiting a relative but that she'd be coming back today."
+
+    e frowntalk "The queen..."
+    e up "The queen! What does she believe about all of this?"
+
+    show emory frown
+
+    k "I'm sure she believes the same as the king. Why?"
+
+    e frowntalk "Well- consider, if we can't get through to the king, then maybe..."
+
+    show emory frown
+
+    k "No, [pname], please don't. Don't give me hope."
+
+    e frowntalk "If anyone can do it then surely-{w=0.5}{nw}"
+
+    show emory frown
+
+    k "Then, surely, what?"
+    k "I'm tired of trying, [pname]. You see how far it's lead me."
+
+    e sad "..."
+    e down frowntalk "Katherine."
+    e "Answer me. "
+    extend "Do you want to marry Cordelian?"
+
+    show emory up frown
+
+    k "...No."
+
+    e frowntalk "Then don't."
+    e "You don't want to, I don't want you to-{w=0.5}{nw}"
+
+    show emory frown
+
+    k "{i}You{/i} don't want me to? Since when was this about {i}you{/i}?"
+
+    e sad frowntalk "K-Katherine..."
+    e "I..."
+
+    menu:
+        "I like you.":
+            e "I... I like you..."
+            e "Ever since Cordelian introduced us, I... I've wanted to spend more time with you..."
+            e "I- I know you must not feel the same, but-{w=0.5}{nw}"
+
+            show emory frown
+
+            k "[pname]..."
+            k "I... I can't deny I've enjoyed spending time with you... {size=20}maybe even more than with Cordelian...{/size}"
+            k "But, for now... I can't consider it. Not while I'm still bound by this ring."
+            k "If the situation was different..."
+
+
+        "I don't want you to suffer.":
+            e "Katherine... I don't want you to suffer in a situation you don't want to be in."
+            e "This is the rest of your {i}life{/i}."
+
+            show emory frown
+
+            k "Do you not think I know that?"
+
+            e frowntalk "I- I do, I just... I don't want to see you hurt yourself for the sake of others."
+            e "I... I like spending time with you. I want to see you happy."
+
+            show emory frown
+
+            k "..."
+            k "I... I enjoy spending time with you too..."
+            k "And I want to see you happy..."
+            k "But... I can't consider anything else for now. Not while I'm still bound by this ring."
+            k "Maybe- perhaps- if the situation was different..."
+
+    e talk "The situation will be better soon."
+
+    show emory smile
+
+    k "[pname]... I really wish I could share that optimism."
+
+    e talk "You could if you wanted to."
+    e "Now, would you like to see what Her Majesty believes?"
+
+    show emory smile
+
+    k "...Yes."
+
+    scene bg castleinside1
+    with fadee
+
+    king "You're falling for these delusions too, Morgan?"
+    queen "Henry, if he was simply trying to get out of commitment he would have voiced his concerns long ago. Look at him."
+    queen "Is this forced marriage really worth the happiness of our son? Will this really aid us that much in the long run?"
+    king "Listen to yourself! You agreed to this not long ago!"
+    queen "I know, I know-"
+    king "We made a deal!"
+    queen "Deals can be changed!"
+    queen "They're our allies- we can barter for something else such as lowered tariffs or taxation!"
+    queen "Why must you insist we barter with {i}lives{/i}?"
+    king "You were fine with that just last week!"
+    queen "And now I've come to my senses!"
+    queen "When will you come to yours?"
+
+    scene bg castleinside1
+    with fadee
+
+    show cordelian up frown at leftt
+    show katherine up frown at rightt
+    with dissolve
+
+    king "...Cordelian. Katherine."
+    king "Is this really what you two want?"
+
+    c frowntalk "Yes, Father."
+
+    show cordelian frown
+
+    k frowntalk "...Yes, your Highness."
+
+    show katherine frown
+
+    king "Why hadn't you expressed this before? Before all this preparation? Before all this was set in stone?"
+
+    c sad frowntalk "I... well, we thought..."
+    extend " *cough* "
+    extend " We thought it would be best if we went along with it."
+    c up "But now- now I see I was wrong."
+
+    show cordelian frown
+
+    king "{i}You{/i} were wrong?"
+
+    c frowntalk "...Yes, Father."
+    c "I {i}thought{/i} it would be for the best. We don't believe that anymore."
+    c "I want what's best for Sharan, and with that in mind, I don't believe an arranged marriage would fit that."
+    c "Katherine believes the same."
+    c "When we were there last, you two were talking about tariffs and fishing rights on the coast- we can use these as leverage rather than the rest of my- the rest of our- lives."
+
+    show cordelian frown
+
+    king "..."
+    king "......"
+    king "...Alright then."
+    king "I believe His Highness will be most amicable to increased tariffs- though, he might be upset not to see his daughter wed in a few days."
+
+    k talk "Maybe some day, but not for now."
+    k "Thank you, your Highness. You have my sincerest gratitude."
+
+    show katherine smile
+
+    c talk "I don't think all of the planning has to go to waste. We do need to have a final send off for our troops, no?"
+
+    show cordelian smile
+
+    king "Yes, I'm sure they'd be honored by a royal wedding-sized party."
+
+    c talk "Thank you, Father."
+
+    show cordelian smile
+
+    $ renpy.pause(0.1)
+
+    scene bg ballroom
+    with fade
+
+    en "Just like he promised, it's a party fit for royalty- but all for the soldiers."
+    en "I never thought someone could go through all the stages of grief so quickly as when Cordelian told Marco about the change of plans."
+    en "Now, he's just relieved."
+    en "I suppose this is the last I'll see of Katherine for a long time... she doesn't have much of a reason to visit anymore."
+    en "I wish I could convince her to stay a bit longer."
+
+    show emory up smile at leftt
+    show katherine up smile at rightt
+    with dissolve
+
+    e talk "A lovely party, isn't it?"
+
+    show emory smile
+
+    k talk "Yes, indeed."
+    k "Still, I find it hard to believe that just a few days ago I was set to be in a bridal gown and taking my vows."
+
+    show katherine smile
+
+    e talk "I do as well."
+    e "What will happen to the dress?"
+
+    show emory smile
+
+    k talk "I believe Father will keep it for a time until I either wear it or I outgrow it."
+    k "It was a, ah, rather fitted dress."
+    k "Regardless, if I outgrow he'll most likely give it away for a charity auction. Royal bridal gowns aren't exactly common- nor cheap."
+
+    show katherine smile
+
+    e talk "Sounds like a solid plan."
+    e "What about you?"
+    e "Ready to head back to Dersion?"
+
+    show emory smile
+
+    k talk "Maybe. "
+    extend "Maybe not."
+    k "Father says it's safer if I stay here, but I'm getting a tad homesick."
+    k "I've yet to make my mind up. Is there anything I've yet to see here?"
+
+    show katherine smile
+
+    e talk "Oh, there's plenty. Cordelian never showed you the grand library in Oxville, did he? There's also the waterfall in Vesuvia, and the cathedral Mesomer."
+    e "My, there's enough natural landmarks to see in one vacation, even without the man-made ones."
+
+    show emory smile
+
+    k talk "It certainly sounds like it. But, I'd be hard pressed to find a tour guide so soon."
+
+    show katherine smile
+
+    e talk "Then consider me your guide."
+    e "I do have a fee, though."
+
+    show emory smile
+
+    k frowntalk "A fee?"
+
+    show katherine frown
+
+    e talk "A dance."
+    e "Shall we?"
+
+    show emory smile
+
+    k frowntalk "A dance..."
+    k talk "Yes, we shall."
+
+    show katherine smile
+
+    en "I take her hand and we glide to the main floor."
+    en "The soldiers are giddy- intoxicated both from the wine and the atmosphere."
+    en "What was to be a dreary party was now turned into a celebration of life and love."
+    en "A celebration to remember how dear life was."
+    en "A celebration to remember to keep our eyes towards the future."
+
+    k "[pname]... There's a lot I've yet to see in Sharan, but you've never visited Dersion, have you?"
+
+    e "No, I haven't."
+
+    k "It's a beautiful country- but my words can only carry it so far."
+    k "After you show me around Sharan... would you perhaps care for an escort around Dersion?"
+
+    e "I'd love to."
+
+    jump credits
 
 
 
